@@ -23,5 +23,11 @@
   <%= @blog.min_read %>
 </p>
 
+<h1>Comments</h1>
+<div>
+  <%=render partial: 'comments/comment', collection:@blog.comments.reverse%>
+  <%= render partial: 'comments/form'%>
+</div>
+
 <%= link_to 'Edit', edit_blog_path(@blog) %> |
 <%= link_to 'Back', blogs_path %>
