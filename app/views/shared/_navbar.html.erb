@@ -1,24 +1,28 @@
-<nav class="navbar" role="navigation" aria-label="main navigation">
- 
-  <div>
-  <%= link_to "HOME",  root_path %>
-    
-
-    
-    <div class="navbar-end">
-      <div class="navbar-item">
-        <div class="buttons">
-        <%if user_signed_in? %>
-        <%= link_to  "Edit Profile",  edit_user_registration_path %>
-        <%= link_to  "Sign Out", destroy_user_session_path, :method => :delete  %>
-        <%else%>
-            <%= link_to  "Sign In", new_user_session_path  %>
-            <%= link_to  "Sign Up", new_user_registration_path %>
-        
-        <%end%>
-        </div>
-      </div>
+<nav class="navbar navbar-dark bg-dark">
+  <div class="container">
+  
+    <div class="navbar-brand brand">
+      <%= link_to "PORKY",  root_path %>
     </div>
+    <ul class="nav mr-auto">
+      <li class="navbar-item">
+        <%= link_to 'New Blog', new_blog_path %>
+      </li>
+    </ul>
+
+    <ul class="nav ml-auto">
+      <%if user_signed_in? %>
+        <li class="nav-item ">
+          <%= link_to  "Edit Profile",  edit_user_registration_path, class: "btn btn-primary padding" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to  "Sign Out", destroy_user_session_path, method: :delete , class: "btn btn-secondary padding" %>
+        </li>
+      <%else%>
+        <li class="nav-item"><%= link_to  "Log In", new_user_session_path , class: "btn btn-primary padding" %></li>
+        <li class="nav-item"><%= link_to  "Sign Up", new_user_registration_path , class: "btn btn-secondary padding"%></li>
+      <%end%>
+    </ul>
+
   </div>
- 
 </nav>
