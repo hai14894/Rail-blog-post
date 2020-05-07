@@ -13,17 +13,18 @@ class BlogsController < ApplicationController
   def show
     @comment = Comment.new
     @comment.blog_id = @blog.id
+    @categories = Category.find_by(params[:category_id])
   end
 
   def new
-    @blog = Blog.new
+    @blog = current_user.blogs.build
   end
 
   def edit
   end
 
   def create
-    @blog = Blog.new(blog_params)
+    @blog = current_user.blogs.build(blog_params)
 
     respond_to do |format|
       if @blog.save
