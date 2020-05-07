@@ -5,7 +5,9 @@ class BlogsController < ApplicationController
   before_action :set_vars, only: [:new, :create, :edit, :update]
 
   def index
-    @blogs = Blog.all
+    # @blogs = Blog.all
+    @q = Blog.ransack(params[:q])
+    @blogs = @q.result(distinct: true)
   end
 
   def show
