@@ -4,10 +4,21 @@
     <div class="navbar-brand brand">
       <%= link_to "PORKY",  root_path %>
     </div>
-    <ul class="nav mr-auto">
-      <li class="navbar-item">
-        <%= link_to 'New Blog', new_blog_path %>
+    <ul class="navbar nav mr-auto">
+      <li class="nav-item">
+        <%= link_to 'New Blog', new_blog_path, class: "padding" %>
       </li>
+      <li class="nav-item dropdown">
+         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Categories
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% Category.all.each do |cat|%>
+            <a class="dropdown-item"><%=link_to cat.category, blogs_path(category: cat.category)%></a>
+          <% end %>
+        </div>
+      </li>
+
     </ul>
 
     <ul class="nav ml-auto">

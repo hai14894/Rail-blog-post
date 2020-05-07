@@ -23,6 +23,11 @@
   <%= @blog.min_read %>
 </p>
 
+<p>
+  <strong>Category:</strong>
+  <%= @categories.category %>
+</p>
+
 <h1>Comments</h1>
 <div>
   <%=render partial: 'comments/comment', collection:@blog.comments.reverse%>

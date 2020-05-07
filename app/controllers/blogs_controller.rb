@@ -2,28 +2,36 @@ class BlogsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
-  before_action :set_vars, only: [:new, :create, :edit, :update]
+  before_action :set_vars, only: [:new, :create, :edit, :update,:show]
 
   def index
-    # @blogs = Blog.all
-    @q = Blog.ransack(params[:q])
-    @blogs = @q.result(distinct: true)
+    if params[:category].blank?
+      # @blogs = Blog.all
+      @q = Blog.ransack(params[:q])
+      @blogs = @q.result(distinct: true)
+    else
+      @q = Blog.ransack(params[:q])
+      @blogs = @q.result(distinct: true)
+      @category_id = Category.find_by(category: params[:category]).id
+      @blogs = Blog.where(category_id: @category_id).order("created_at DESC")
+    end
   end
 
   def show
     @comment = Comment.new
     @comment.blog_id = @blog.id
+    @categories = Category.find_by(params[:category_id])
   end
 
   def new
-    @blog = Blog.new
+    @blog = current_user.blogs.build
   end
 
   def edit
   end
 
   def create
-    @blog = Blog.new(blog_params)
+    @blog = current_user.blogs.build(blog_params)
 
     respond_to do |format|
       if @blog.save
@@ -65,6 +73,6 @@ class BlogsController < ApplicationController
     end
 
     def blog_params
-      params.require(:blog).permit(:title, :body, :posted_at, :min_read, :picture, :category_id)
+      params.require(:blog).permit(:title, :body, :posted_at, :min_read, :picture, :category_id,:user_id)
     end
 end
