@@ -6,6 +6,9 @@
 </p>
 
 <p>
+  <%= image_tag @blog.picture if @blog.picture.attached? %>
+</p>
+<p>
   <strong>Body:</strong>
   <%= @blog.body %>
 </p>

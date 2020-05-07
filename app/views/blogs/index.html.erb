@@ -16,6 +16,7 @@
   <tbody>
     <% @blogs.each do |blog| %>
       <tr>
+        <td><%= image_tag blog.picture, width: "200px" if blog.picture.attached? %></td>
         <td><%= blog.title %></td>
         <td><%= blog.body %></td>
         <td><%= blog.posted_at %></td>
