@@ -1,9 +1,13 @@
 class BlogsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:show, :index]
+  before_action :set_vars, only: [:new, :create, :edit, :update]
 
   def index
-    @blogs = Blog.all
+    # @blogs = Blog.all
+    @q = Blog.ransack(params[:q])
+    @blogs = @q.result(distinct: true)
   end
 
   def show
@@ -53,11 +57,14 @@ class BlogsController < ApplicationController
   end
 
   private
+    def set_vars 
+      @categories = Category.all
+    end
     def set_blog
       @blog = Blog.find(params[:id])
     end
 
     def blog_params
-      params.require(:blog).permit(:title, :body, :posted_at, :min_read, :picture)
+      params.require(:blog).permit(:title, :body, :posted_at, :min_read, :picture, :category_id)
     end
 end

@@ -1,6 +1,17 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Blogs</h1>
+<div>
+<%= search_form_for @q do |f| %>
+
+  # Search if the name field contains...
+  <%= f.label "Find post:" %>
+  <%= f.search_field :title_or_body_cont %>
+
+
+  <%= f.submit %>
+<% end %>
+</div>
 
 <table>
   <thead>
