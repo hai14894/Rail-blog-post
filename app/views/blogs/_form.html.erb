@@ -35,6 +35,10 @@
     <%= form.label :min_read %>
     <%= form.number_field :min_read %>
   </div>
+  <div class="field">
+     <%= form.label :category_id %>  
+    <%= form.select(:category_id, @categories.map{|l| [l.category, l.id]}) %> 
+  </div>
 
   <div class="actions">
     <%= form.submit %>
