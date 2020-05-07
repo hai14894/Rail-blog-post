@@ -1,21 +1,16 @@
-# README
+<h1>Hackathon-Team 5
+<h2>Project Members
 
+<h3>Wilkins Cheng
+<h3>Hai Ho
 
+<h2>Description:
 
-* Ruby version
+<h3>A blog app made with Ruby on Rails.
 
-* System dependencies
+<h2>Technology:
 
-* Configuration
+<h3>Bootstrap - CSS framework
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<h3>Devise gem - Authentication solution for Rails
+<h3>Randsack gem- Search function 
