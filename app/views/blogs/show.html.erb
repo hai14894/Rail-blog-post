@@ -1,45 +1,46 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+  <p>
+    <strong>Title:</strong>
+    <%= @blog.title %>
+  </p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @blog.title %>
-</p>
+  <p>
+    <%= image_tag @blog.picture if @blog.picture.attached? %>
+  </p>
+  <p>
+    <strong>Body:</strong>
+    <%= @blog.body %>
+  </p>
 
-<p>
-  <%= image_tag @blog.picture if @blog.picture.attached? %>
-</p>
-<p>
-  <strong>Body:</strong>
-  <%= @blog.body %>
-</p>
+  <p>
+    <strong>Posted at:</strong>
+    <%= @blog.posted_at %>
+  </p>
 
-<p>
-  <strong>Posted at:</strong>
-  <%= @blog.posted_at %>
-</p>
+  <p>
+    <strong>Min read:</strong>
+    <%= @blog.min_read %>
+  </p>
 
-<p>
-  <strong>Min read:</strong>
-  <%= @blog.min_read %>
-</p>
-
-<p>
-  <strong>Category:</strong>
-  <%= @categories.category %>
-</p>
+  <p>
+    <strong>Category:</strong>
+    <%= @categories.category %>
+  </p>
 
 
-<h1>Ratings</h1>
-  <%=render 'ratings/rating', ratings:@blog.ratings %>
-  <%= render partial: 'ratings/form' %>
+  <h1>Ratings</h1>
+    <%=render 'ratings/rating', ratings:@blog.ratings %>
+    <%= render partial: 'ratings/form' %>
+  </div>
+
+
+  <h1>Comments</h1>
+  <div>
+    <%=render partial: 'comments/comment', collection:@blog.comments.reverse%>
+    <%= render partial: 'comments/form'%>
+  </div>
+
+  <%= link_to 'Edit', edit_blog_path(@blog) %> |
+  <%= link_to 'Back', blogs_path %>
 </div>
-
-
-<h1>Comments</h1>
-<div>
-  <%=render partial: 'comments/comment', collection:@blog.comments.reverse%>
-  <%= render partial: 'comments/form'%>
-</div>
-
-<%= link_to 'Edit', edit_blog_path(@blog) %> |
-<%= link_to 'Back', blogs_path %>

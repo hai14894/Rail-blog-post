@@ -1,4 +1,8 @@
-<%average = ratings.map{|r| r.score}.sum/ratings.length%>
+<% if ratings.length == 0%>
+  <%average = 0%>
+<% else %>
+  <%average = ratings.map{|r| r.score}.sum/ratings.length%>
+<% end %>
 <div>
   <%if average == 0%>
     <%=image_tag("star-off.png")%> Not Worth your time!
