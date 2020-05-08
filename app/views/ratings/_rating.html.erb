@@ -1,4 +1,10 @@
 <div>
-  <h4>Score <%= rating.score %> <%image_tag("/images/star-on.png")%></h4>
+  <%if rating.score == 0%>
+    <%=image_tag("star-off.png")%> Not Worth your time!
+  <% else %>
+    <%for i in 0..rating.score-1%>
+      <%=image_tag("star-on.png")%>
+    <% end %>
+  <% end %>
 </div>
 
