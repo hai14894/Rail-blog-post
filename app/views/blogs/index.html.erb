@@ -22,10 +22,10 @@
   <%= image_tag blog.picture, width: "200px", class:"mr-3" %>
   <div class="media-body">
   <%= link_to  blog_path(blog.id) do  %>
-    <h5 class="mt-0 badge badge-secondary"><%= blog.title %></h5>
+    <h5 class="badge badge-secondary"><%= blog.title %></h5>
     <%end%>
     <%if blog.category %>
-    <h5 class="mt-0"><%= blog.category.category %></h5>
+    <h5>Category: <span><%= blog.category.category %></span></h5>
     
     <% if current_user && blog.user_id && current_user.id == blog.user_id %>
     <%= link_to 'Edit', edit_blog_path(blog) %>
