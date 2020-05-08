@@ -28,10 +28,10 @@
   <%= @categories.category %>
 </p>
 
+
 <h1>Ratings</h1>
-<div>
-  <%=render partial: 'ratings/rating', collection:@blog.ratings %>
-  <%= render partial: 'ratings/form'%>
+  <%=render 'ratings/rating', ratings:@blog.ratings %>
+  <%= render partial: 'ratings/form' %>
 </div>
 
 

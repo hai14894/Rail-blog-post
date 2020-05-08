@@ -1,4 +1,5 @@
 class RatingsController < ApplicationController
+
   def create
     @rating = Rating.new(rating_params)
     @rating.blog_id = params[:blog_id]
