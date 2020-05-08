@@ -4,7 +4,7 @@
 <div>
 <%= search_form_for @q do |f| %>
 
-  # Search if the name field contains...
+
   <%= f.label "Find post:" %>
   <%= f.search_field :title_or_body_cont %>
 
@@ -40,6 +40,22 @@
   </tbody>
 </table>
 
+<%@blogs.each do |blog|%>
+<div class="media">
+
+<%= link_to  blog_path(blog.id) do  %>
+  <%= image_tag blog.picture, width: "200px", class:"mr-3" %>
+  <div class="media-body">
+    <h5 class="mt-0"><%= blog.title %></h5>
+    <%if blog.category %>
+    <h5 class="mt-0"><%= blog.category.category %></h5>
+    <%end%>
+    
+
+  </div>
+  <%end%>
+</div>
+<%end%>
 <br>
 
 <%= link_to 'New Blog', new_blog_path %>
