@@ -43,13 +43,17 @@
 <%@blogs.each do |blog|%>
 <div class="media">
 
-
-  <%= image_tag blog.picture, width: "200px" %>
+<%= link_to  blog_path(blog.id) do  %>
+  <%= image_tag blog.picture, width: "200px", class:"mr-3" %>
   <div class="media-body">
     <h5 class="mt-0"><%= blog.title %></h5>
+    <%if blog.category %>
+    <h5 class="mt-0"><%= blog.category.category %></h5>
+    <%end%>
     
 
   </div>
+  <%end%>
 </div>
 <%end%>
 <br>
