@@ -2,10 +2,11 @@
 
 <%= form_for [ @blog, @rating ] do |f| %>
   <p>
-    <%= f.label :score %><br/>
+    <%= f.label :score,  'Score (1-5)'%><br/>
     <%= f.number_field :score %>
   </p>
   <p>
     <%= f.submit 'Submit' %>
   </p>
 <% end %>
+
