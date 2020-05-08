@@ -28,6 +28,13 @@
   <%= @categories.category %>
 </p>
 
+<h1>Ratings</h1>
+<div>
+  <%=render partial: 'ratings/rating', collection:@blog.ratings %>
+  <%= render partial: 'ratings/form'%>
+</div>
+
+
 <h1>Comments</h1>
 <div>
   <%=render partial: 'comments/comment', collection:@blog.comments.reverse%>

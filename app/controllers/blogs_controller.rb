@@ -21,6 +21,8 @@ class BlogsController < ApplicationController
     @comment = Comment.new
     @comment.blog_id = @blog.id
     @categories = Category.find_by(params[:category_id])
+    @rating = Rating.new
+    @rating.blog_id = @blog.id
   end
 
   def new

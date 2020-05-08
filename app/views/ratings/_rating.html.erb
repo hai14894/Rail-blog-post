@@ -1,0 +1,4 @@
+<div>
+  <h4>Score <%= rating.score %></h4>
+  <%= link_to 'Delete', blog_rating_path(rating.blog, rating), method: :delete, data: {confirm: "Are you Sure?"} %>
+</div>

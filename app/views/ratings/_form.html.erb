@@ -1,0 +1,11 @@
+<h3>Post a Rating</h3>
+
+<%= form_for [ @blog, @rating ] do |f| %>
+  <p>
+    <%= f.label :score %><br/>
+    <%= f.number_field :score %>
+  </p>
+  <p>
+    <%= f.submit 'Submit' %>
+  </p>
+<% end %>
